@@ -1,6 +1,8 @@
 function Dashboard() {
   return (
-    <></>
+    <>
+    <p>hello</p>
+    </>
   )
 }
 
