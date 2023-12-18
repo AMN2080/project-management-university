@@ -1,32 +1,76 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
 function Main(){
+  let [project, setProject] = useState([])
+  let [notification, setNotification] = useState([])
+
+  useEffect(()=>{
+    axios.get('http://localhost:5000/project')
+    .then(response => setProject(response.data))
+  })
+  useEffect(()=>{
+    axios.get('http://localhost:5000/notifications')
+    .then(response => setNotification(response.data))
+  })
+
   return(
     <main className="lg:mr-80 p-5 text-blue-600 dark:text-blue-300">
-        <section>
-          <div className="h-full p-12 text-center flex flex-col lg:flex-row gap-y-20 items-center justify-between border-4 border-gray-400 dark:border-gray-200 border-dashed rounded">
-            <div className="w-60 mx-4 p-12 break-words border-2 border-dashed rounded">
-              <p>اعلانی موجود نیست</p>
-            </div>
-            <table className="border-gray-400 border-2">
-              <thead>
-                <tr className="text-blue-800 dark:text-blue-500">
-                  <th className="border-gray-400 border-b-2 px-8 py-4">عنوان پروژه</th>
-                  <th className="border-gray-400 border-b-2 px-8 py-4">وضعیت</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="px-8 py-4">آپولو یازده</td>
-                  <td className="px-8 py-4">تایید استاد</td>
-                </tr>
-                <tr>
-                  <td className="px-8 py-4">کاغذ دیواری</td>
-                  <td className="px-8 py-4">رد استاد</td>
-                </tr>
-              </tbody>
-            </table>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="right">عنوان پروژه</StyledTableCell>
+              <StyledTableCell align="left">وضعیت</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {project.map(item => (
+              <StyledTableRow key={item.id}>
+                <StyledTableCell align="right">{item.topic}</StyledTableCell>
+                <StyledTableCell align="left">{item.situation}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <div className="h-full overflow-x-auto mt-8 p-12 text-center flex flex-col flex-wrap lg:flex-row gap-y-20 items-center justify-between border-4 border-gray-400 dark:border-gray-200 border-dashed rounded">
+        {notification.map(item => (
+          <div key={item.id} className="p-12 break-words border-2 border-dashed rounded">
+            <h3 className='font-bold text-red-700'>{item.topic}</h3>
+            <p>{item.text}</p>
           </div>
-        </section>
-      </main>
+        ))}
+      </div>
+    </main> 
   )
 }
 

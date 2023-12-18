@@ -6,7 +6,7 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import {useMemo} from "react"
 
 function Theme(){
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
   
   const getDesignTokens = (prefersDarkMode) => ({
     typography: {
