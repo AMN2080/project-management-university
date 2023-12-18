@@ -1,8 +1,14 @@
+import Navbar from "../../components/navbar/Navbar"
+import Offcanvas from "../../components/offcanvas/Offcanvas"
+import Main from "../../components/main/Main"
+
 function Dashboard() {
   return (
-    <>
-    <p>hello</p>
-    </>
+    <div className="flex flex-col">
+      <Offcanvas />
+      <Navbar />
+      <Main />
+    </div>
   )
 }
 
