@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 function Login() {
   return (
     <div className="h-[100vh] flex items-center justify-center bg-[url(./assets/img/login-background.svg)] bg-center">
-      <Box dir='ltr' className='w-96 py-8 rounded-3xl flex items-center flex-col gap-y-4 justify-center bg-rgba-gray'
+      <Box dir='ltr' className='w-96 py-8 rounded-3xl flex items-center flex-col gap-y-4 justify-center bg-rgba shadow border'
         component="form"
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },

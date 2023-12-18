@@ -43,7 +43,7 @@ function Main(){
   })
 
   return(
-    <main className="lg:mr-80 p-5 text-blue-600 dark:text-blue-300">
+    <main className="lg:mr-80 p-5 text-blue-600">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -62,7 +62,7 @@ function Main(){
           </TableBody>
         </Table>
       </TableContainer>
-      <div className="h-full overflow-x-auto mt-8 p-12 text-center flex flex-col flex-wrap lg:flex-row gap-y-20 items-center justify-between border-4 border-gray-400 dark:border-gray-200 border-dashed rounded">
+      <div className="h-full overflow-x-auto mt-8 p-12 text-center flex flex-col flex-wrap lg:flex-row gap-y-20 items-center justify-between border-4 border-gray-400 border-dashed rounded">
         {notification.map(item => (
           <div key={item.id} className="p-12 break-words border-2 border-dashed rounded">
             <h3 className='font-bold text-red-700'>{item.topic}</h3>

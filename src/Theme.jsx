@@ -1,12 +1,14 @@
 import createTheme from '@mui/material/styles/createTheme';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import App from './App.jsx'
+// import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import { useCookies } from 'react-cookie';
+import App from './App.jsx'
 import {useMemo} from "react"
 
 function Theme(){
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
+  const [dark] = useCookies(['darkMode']);
+  const prefersDarkMode = dark.darkMode
   
   const getDesignTokens = (prefersDarkMode) => ({
     typography: {
