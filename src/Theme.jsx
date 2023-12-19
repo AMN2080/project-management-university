@@ -1,5 +1,4 @@
 import createTheme from '@mui/material/styles/createTheme';
-// import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import { useCookies } from 'react-cookie';
