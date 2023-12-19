@@ -19,6 +19,17 @@ function Theme(){
     },
     palette: {
       mode: prefersDarkMode ? 'dark' : 'light',
+      ...(prefersDarkMode
+        ? {
+            primary: {
+              main: '#151c47',
+            }
+          }
+          : {
+            primary: {
+              main: "#4558d1"
+            }
+          }),
     },
   });
   

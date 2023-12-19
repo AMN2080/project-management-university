@@ -1,4 +1,5 @@
 import { useCookies } from 'react-cookie';
+import Offcanvas from "../offcanvas/Offcanvas"
 
 function Navbar(){
   const [dark, setDark] = useCookies(['darkMode']);
@@ -9,9 +10,7 @@ function Navbar(){
   return(
     <nav className="flex items-center h-14 lg:mr-80 px-5 shadow-md">
       <div className="w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" id="showOffcanvas" className="text-white bg-indigo-700 hover:bg-transparent hover:text-indigo-700 transition border border-indigo-700 rounded w-10 ml-5 p-1 cursor-pointer lg:hidden">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
+        <Offcanvas />
       </div>
       <div className='cursor-pointer' onClick={handleClick}>
         {/* dark mode icon */}
