@@ -1,6 +1,9 @@
 import createTheme from '@mui/material/styles/createTheme';
 import CssBaseline from '@mui/material/CssBaseline';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import green from '@mui/material/colors/green.js'
+import blue from '@mui/material/colors/blue.js'
+import indigo from '@mui/material/colors/indigo.js'
 import { useCookies } from 'react-cookie';
 import App from './App.jsx'
 import {useMemo} from "react"
@@ -21,14 +24,11 @@ function Theme(){
       mode: prefersDarkMode ? 'dark' : 'light',
       ...(prefersDarkMode
         ? {
-            primary: {
-              main: '#151c47',
-            }
+            primary: indigo,
+            secondary: green,
           }
           : {
-            primary: {
-              main: "#4558d1"
-            }
+            primary: blue
           }),
     },
   });

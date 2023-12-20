@@ -43,7 +43,7 @@ function Main(){
   })
 
   return(
-    <main className="lg:mr-80 p-5 text-blue-600">
+    <div className="lg:mr-80 p-5 text-blue-600">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -70,7 +70,7 @@ function Main(){
           </div>
         ))}
       </div>
-    </main> 
+    </div> 
   )
 }
 
