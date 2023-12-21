@@ -1,9 +1,10 @@
+import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
 function ReportProject() {
   return (
-    <div className="lg:mr-80 p-5 flex flex-col justify-center gap-y-5">
+    <Box className="lg:mr-80 p-5 flex flex-col justify-center gap-y-5">
       <div className='flex justify-between'>
         <TextField
           color='secondary'
@@ -19,10 +20,10 @@ function ReportProject() {
         color='secondary'
         label="توضیحات"
         multiline
-        rows={4}
+        rows={10}
         defaultValue=""
       />
-    </div>
+    </Box>
   )
 }
 
