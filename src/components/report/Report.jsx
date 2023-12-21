@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+import Swal from 'sweetalert2'
 import axios from 'axios'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,10 +11,34 @@ import Button from '@mui/material/Button';
 
 function ReportProject() {
   const [project, setProject] = useState([]);
-  const [selectValue, setSelectValue] = useState("")
+  const [selectValue, setSelectValue] = useState()
+  const [formData, setFormData] = useState({})
+  const navigator = useNavigate()
 
-  const handleChange = (event) => {
+  const formHandler = (event) => {
+    setFormData({...formData , [event.target.name]:event.target.value})
+  }
+
+  const clickHandler = () => {
+    axios.post('http://localhost:5000/report-project',formData)
+    // پیام موفقیت
+    .then(res => {
+      console.log(res.status)
+      if(res.status === 201){
+        Swal.fire({
+          icon: 'success',
+          title: 'گزارش ارسال شد',
+          showConfirmButton: false,
+          timerProgressBar: true,
+          timer: 1500
+        })
+        navigator('/home')
+      }
+  })}
+
+  const selectHandler = (event) => {
     setSelectValue(event.target.value);
+    formHandler(event)
   };
 
   useEffect(()=>{
@@ -26,24 +52,26 @@ function ReportProject() {
         <InputLabel id="project-name" color='secondary'>نام پروژه</InputLabel>
         <Select
           color='secondary'
-          labelId="project-name"
+          name='Fid'
           value={selectValue}
           label="نام پروژه"
-          onChange={handleChange}
+          onChange={selectHandler}
         >
           {project.map((item) => (
-            <MenuItem key={item.id} value={"گزارش " + item.topic}>{item.topic}</MenuItem>
+            <MenuItem key={item.id} value={item.id}>{item.topic}</MenuItem>
             ))}
         </Select>
 
         <TextField
+          onChange={formHandler}
           color='secondary'
+          name='report'
           label="گزارش"
           multiline
           rows={10}
           defaultValue=""
         />
-        <Button variant="contained" >ارسال</Button>
+        <Button onClick={clickHandler} variant="contained" >ارسال</Button>
       </FormControl>
     </div>
   )

@@ -21,7 +21,7 @@ function ReportProject() {
       if(res.status === 201){
         Swal.fire({
           icon: 'success',
-          title: 'مقاله منتشر شد',
+          title: 'درخواست ارسال شد',
           showConfirmButton: false,
           timerProgressBar: true,
           timer: 1500
