@@ -38,7 +38,7 @@ function Main(){
     .then(response => setProject(response.data))
   })
   useEffect(()=>{
-    axios.get('http://localhost:5000/notifications')
+    axios.get('http://localhost:5000/notification')
     .then(response => setNotification(response.data))
   })
 
