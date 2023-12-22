@@ -20,7 +20,7 @@ function ReportProject() {
   }
 
   const clickHandler = () => {
-    axios.post('http://localhost:5000/report-project',formData)
+    axios.patch(`http://localhost:5000/project${selectValue}`,formData)
     // پیام موفقیت
     .then(res => {
       console.log(res.status)
