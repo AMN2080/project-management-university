@@ -39,20 +39,21 @@
   "project": [
     {
       "topic": "پروژه۱",
+      "user": "ممد",
       "situation": "تایید استاد",
       "discription": "",
-      "reports": "",
       "id": 1
     },
     {
       "topic": "پروژه۲",
+      "user": "رضو",
       "situation": "تایید استاد",
       "discription": "",
-      "reports": "",
       "id": 2
     },
     {
       "discription": "میخوام بریم فضا",
+      "user": "قاسم",
       "topic": "آپولو یازده",
       "id": 3
     }

@@ -17,7 +17,6 @@ function ReportProject() {
     axios.post('http://localhost:5000/project',formData)
     // پیام موفقیت
     .then(res => {
-      console.log(res.status)
       if(res.status === 201){
         Swal.fire({
           icon: 'success',

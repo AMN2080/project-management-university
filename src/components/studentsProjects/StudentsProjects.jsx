@@ -5,6 +5,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
+import Button from '@mui/material/Button'
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -31,15 +32,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function StudentsProjects(){
   let [project, setProject] = useState([])
-  let [notification, setNotification] = useState([])
 
   useEffect(()=>{
     axios.get('http://localhost:5000/project')
     .then(response => setProject(response.data))
-  })
-  useEffect(()=>{
-    axios.get('http://localhost:5000/notifications')
-    .then(response => setNotification(response.data))
   })
 
   return(
@@ -48,28 +44,22 @@ function StudentsProjects(){
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="right">عنوان پروژه</StyledTableCell>
-              <StyledTableCell align="left">وضعیت</StyledTableCell>
+              <StyledTableCell align="center">نام دانشجو</StyledTableCell>
+              <StyledTableCell align="center">عنوان</StyledTableCell>
+              <StyledTableCell align="center" />
             </TableRow>
           </TableHead>
           <TableBody>
             {project.map(item => (
               <StyledTableRow key={item.id}>
-                <StyledTableCell align="right">{item.topic}</StyledTableCell>
-                <StyledTableCell align="left">{item.situation}</StyledTableCell>
+                <StyledTableCell align="center">{item.user}</StyledTableCell>
+                <StyledTableCell align="center">{item.topic}</StyledTableCell>
+                <StyledTableCell align="center"><Button color='secondary' href={`/project-details/${item.id}`}>جزئیات</Button></StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <div className="h-full overflow-x-auto mt-8 p-12 text-center flex flex-col flex-wrap lg:flex-row gap-y-20 items-center justify-between border-4 border-gray-400 border-dashed rounded">
-        {notification.map(item => (
-          <div key={item.id} className="p-12 break-words border-2 border-dashed rounded">
-            <h3 className='font-bold text-red-700'>{item.topic}</h3>
-            <p>{item.text}</p>
-          </div>
-        ))}
-      </div>
     </div> 
   )
 }
