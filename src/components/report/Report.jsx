@@ -20,10 +20,9 @@ function ReportProject() {
   }
 
   const clickHandler = () => {
-    axios.patch(`http://localhost:5000/project${selectValue}`,formData)
+    axios.patch(`http://localhost:5000/project/${selectValue}`,formData)
     // پیام موفقیت
     .then(res => {
-      console.log(res.status)
       if(res.status === 201){
         Swal.fire({
           icon: 'success',
