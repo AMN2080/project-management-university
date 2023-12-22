@@ -38,7 +38,6 @@ function ReportProject() {
 
   const selectHandler = (event) => {
     setSelectValue(event.target.value);
-    formHandler(event)
   };
 
   useEffect(()=>{
@@ -52,7 +51,6 @@ function ReportProject() {
         <InputLabel id="project-name" color='secondary'>نام پروژه</InputLabel>
         <Select
           color='secondary'
-          name='Fid'
           value={selectValue}
           label="نام پروژه"
           onChange={selectHandler}
