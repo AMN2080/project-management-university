@@ -12,7 +12,7 @@ let Routes = [
   {path:'/report-project' , element:<ReportProject />},
   {path:'/create-project' , element:<AddProject />},
   {path:'/projects' , element:<Projects />},
-  {path:'/project-details' , element:<ProjectDetails />},
+  {path:'/project-details/:projectID' , element:<ProjectDetails />},
   {path:'/*' , element:<NotFound />},
 ]
 
