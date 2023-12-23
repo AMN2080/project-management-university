@@ -47,15 +47,17 @@
     {
       "topic": "پروژه۲",
       "user": "رضو",
-      "situation": "تایید استاد",
+      "situation": "رد استاد",
       "discription": "",
-      "id": 2
+      "id": 2,
+      "report": "mamad"
     },
     {
       "discription": "میخوام بریم فضا",
       "user": "قاسم",
       "topic": "آپولو یازده",
-      "id": 3
+      "id": 3,
+      "situation": "تایید استاد"
     }
   ],
   "report-project": [
