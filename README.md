@@ -1,1 +1,1 @@
-ReactJS - ViteJS - MUI - C# - .net
+ReactJS - ViteJS - Material UI - C# - .net
